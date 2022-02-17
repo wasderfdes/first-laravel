@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,20 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('myTemplade');
 });
+
+Route::get('/tareas', function () {
+    return view('todos.index');
+})->name('todos');
+
+
+// route post the todos
+Route::post('/tareas', [TodosController::class, 'store'])->name('todos');
+
+// route index the data todos
+Route::get('/tareas', [TodosController::class, 'index'])->name('todos');
+
+
+// route patch and delete
+Route::get('/tareas/{id}', [TodosController::class, 'show'])->name('todos-edit');
+Route::patch('/tareas/{id}', [TodosController::class, 'update'])->name('todos-update');
+Route::delete('/tareas/{id}', [TodosController::class, 'destroy'])->name('todos-destroy');
