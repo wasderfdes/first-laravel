@@ -21,7 +21,6 @@
   </div>
   <button type="submit" class="btn btn-primary">Actualizar nueva</button>
   </form>
-
 </div>
 
 @endsection
